@@ -1,0 +1,42 @@
+* {
+    font-family: "Bodoni Moda", serif;
+}
+
+/*** BACKGROUND ***/
+img {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    min-width: 300px;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+/*** TITLE ***/
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10vh;
+}
+
+h1 {
+    font-size: calc(35px + 5vw);
+    text-align: center;
+}
+
+h2 {
+    font-family: "Gilda Display", serif;
+    font-size: calc(20px + 2vw);
+}
+
+/*** ADVENTURE ***/
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

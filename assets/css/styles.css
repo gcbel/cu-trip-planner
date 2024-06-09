@@ -1,8 +1,28 @@
+:root {
+    --accentblue: #628FA2;
+    --accentblue-clear: #9cbeccab;
+    --accentblue-hover: #457e97af;
+
+    --accentgray: #8E908F;
+    --accentgray-clear: #505050a1;
+    --accentgray-hover: #343333a1;
+
+    --clear: #ffffff00;
+}
+
 * {
     font-family: "Bodoni Moda", serif;
 }
 
 /*** BACKGROUND ***/
+html {
+    background-color: var(--accentblue);
+}
+
+body {
+    background-color: #ffffff00;
+}
+
 img {
     z-index: -1;
     position: fixed;
@@ -12,7 +32,33 @@ img {
     width: 100vw;
     min-width: 300px;
     object-fit: cover;
-    opacity: 0.7;
+    opacity: 0.6;
+}
+
+/*** LIGHT/DARK TOGGLE ***/
+.toggle {
+    color: black;
+    font-size: 16px;
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    border-color: black;
+    background-color: var(--clear);
+    border-radius: 15px 15px 15px 15px;
+}
+
+.dark .toggle {
+    color: white;
+    border-color: var(--accentgray);
+    background-color: var(--accentgray);
+}
+
+.light {
+    color: black;
+}
+
+.dark {
+    color: white;
 }
 
 /*** TITLE ***/
@@ -21,22 +67,84 @@ header {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    margin-top: 10vh;
+    margin-top: 7vh;
 }
 
 h1 {
     font-size: calc(35px + 5vw);
     text-align: center;
+    margin: 0px;
 }
 
 h2 {
-    font-family: "Gilda Display", serif;
-    font-size: calc(20px + 2vw);
+    font-family: Garamond, serif;
+    font-size: calc(4px + 2vw);
 }
 
-/*** ADVENTURE ***/
+
+/*** LET'S ADVENTURE ***/
 main {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center; /* Center arrow */
+    padding: 10vh 0px 10vh 0px;
+}
+
+.subheader {
+    background-color: var(--accentblue-clear); /* Set color of main buttons */
+    padding: 0px 6vw 0px 6vw;
+    margin: 0px 6vw 20px 6vw;
+    border: 1px solid #000000;
+}
+
+.dark .subheader {
+    background-color: var(--accentgray-clear);
+    border: 1px solid #ffffff;
+}
+
+.subheader:hover {
+    background-color: var(--accentblue-hover)
+}
+
+.dark .subheader:hover {
+    background-color: var(--accentgray-hover)
+}
+
+.subheader-body {
+    padding: 4px 0px 0px 0px;
+}
+
+h3 {
+    display: flex;
+    text-align: center; /* Center "let's adventure" */
+    font-size: calc(8px + 4vw); 
+}
+
+.dark h3 {
+    color: white;
+}
+
+h3:hover {
+    color: black;
+}
+
+.dark h3:hover {
+    color: white;
+}
+
+svg {
+    font-size: 100px;
+    margin: calc(10px + 2vw) 0px 0px 0px;
+}
+
+a {
+    text-decoration: none; /* Remove link look */
+    color: black;
+}
+
+/*** ICONS FOR LARGE SCREENS ***/
+@media screen and (min-width: 430px) {
+    svg {
+        margin: 2px 0px 0px 10px;
+    }
 }

@@ -49,8 +49,8 @@ img {
 
 .dark .toggle {
     color: white;
-    border-color: var(--accentgray);
-    background-color: var(--accentgray);
+    border-color: white;
+    background-color: var(--accentgray-clear);
 }
 
 .light {
@@ -92,9 +92,11 @@ main {
 
 .subheader {
     background-color: var(--accentblue-clear); /* Set color of main buttons */
-    padding: 0px 6vw 0px 6vw;
+    width: calc(30px + 60vw);
     margin: 0px 6vw 20px 6vw;
     border: 1px solid #000000;
+    display: flex;
+    align-items: center;
 }
 
 .dark .subheader {
@@ -116,8 +118,9 @@ main {
 
 h3 {
     display: flex;
-    text-align: center; /* Center "let's adventure" */
+    font-weight: 600;
     font-size: calc(8px + 4vw); 
+    text-align: center;
 }
 
 .dark h3 {

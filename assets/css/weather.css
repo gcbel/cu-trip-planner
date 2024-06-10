@@ -101,8 +101,12 @@ h2 {
     border-radius: 15px 15px 15px 15px;
     height: 43px;
     width: 25vw;
-    min-width: 100px;
+    min-width: 170px;
     padding: 10px;
+}
+
+#input-city:click {
+    background-color: var(--clear);
 }
 
 .dark #input-city {
@@ -113,7 +117,7 @@ h2 {
 
 /*** SUBMIT AND RECENT SEARCH BUTTONS ***/
 .submit, .searches {
-    font-size: 18px;
+    font-size: 22px;
     color: black;
     border-color: black;
     background-color: var(--clear);
@@ -150,20 +154,11 @@ h2 {
     padding: 8px 8px 8px 8px;
 }
 
-#input-city-label {
-    font-size: 18px;
-    margin: 6px 0px 6px 10px;
-}
-
 .input-content {
     margin: 6px 10px 6px 10px;
 }
 
-/*** OUTPUT ***/
-.hidden {
-    display: none;
-}
-
+/*** MAIN OUTPUT ***/
 .output-card-head {
     width: 100%;
     display: flex;
@@ -178,8 +173,27 @@ h2 {
     justify-content: space-around;
 }
 
+.five-day-cont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.five-day-card {
+    font-size: 20px;
+    margin: 14px 14px 14px 14px;
+    width: calc((100% - 28px) / 6);
+    min-width: 160px;
+    flex-grow: 1
+}
+
 h3 {
     font-weight: bold;
+}
+
+.five-day-card h3 {
+    font-size: 20px;
 }
 
 h4 {
@@ -191,16 +205,12 @@ p {
     margin: 0px 8px 8px 8px;
 }
 
+.hidden {
+    display: none;
+}
+
 /*** TABLETS AND DESKTOPS ***/
 @media screen and (min-width: 700px) {
-    #input-city-label {
-        font-size: 22px;
-    }
-
-    .submit, .searches {
-        font-size: 20px;
-    }
-
     .input-card-body, .output-card-body {
         padding: 8px 12px 8px 12px;  /* Increase padding on sides of search bar for wider screens */
     }

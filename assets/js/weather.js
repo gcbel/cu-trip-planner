@@ -1,17 +1,17 @@
 /* VARIABLES */
 const submitBtn = document.querySelector(".submit");
-const weatherCard = document.querySelector(".output-card");
-const fiveDayCard = document.querySelector(".five-day-card");
-const weatherHead = document.querySelector(".output-card-head");
-const weatherBody = document.querySelector(".output-card-body");
+const mainCard = document.querySelector(".output-card");
+const weekCard = document.querySelector(".five-day-cont");
 const ul = document.querySelector("ul");
+const NUMDAYS = 40;
 
 /* FUNCTIONS */
-/* Populates screen with forecast details */
+/* Handles fetching forecast details */
 function handleSubmit(event) {
     event.preventDefault();
 
-    weatherCard.innerHTML = ""  // Clear content from last search
+    mainCard.innerHTML = ""  // Clear content from last search
+    weekCard.innerHTML = ""
     const city = document.querySelector("#input-city").value;  // Get city input
 
     fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=73e3e96b49fb7822dadb93b5d873f6a4`)
@@ -32,51 +32,66 @@ function handleSubmit(event) {
         // Send error message if error
         .catch(error => {
             console.log('Error fetching the weather data:', error)
-            weatherCard.classList.remove('hidden');
+            mainCard.classList.remove('hidden');
+            weekCard.classList.add('hidden');
             const errorMessage = document.createElement('h4');
             errorMessage.textContent = `Sorry, I haven't heard of any cities called ${city}. Please try again.`
-            weatherCard.append(errorMessage);
+            mainCard.append(errorMessage);
         })
 
     document.querySelector("#input-city").value = "";  // Clear input value
 }
 
-/* Display weather forecast */
+/* Display all days of weather forecasts */
 function getSearchForecast(response) {
     console.log(response);
 
-    weatherCard.classList.remove('hidden');
-    weatherCard.append(weatherHead);
-    weatherCard.append(weatherBody);
+    // Make cards visible
+    mainCard.classList.remove('hidden');
+    weekCard.classList.remove('hidden');
 
+    // Display location name
+    const name = document.createElement('h3');
+    name.textContent = response.city.name;
+    mainCard.append(name);
 
-    fiveDayCard.classList.remove('hidden');
+    // Populate main card data
+    const timezone = response.city.timezone
+    getDayForecast(response.list[0], mainCard, timezone);
+
+    // Display weather info between 11 and 3 pm for each day
+    for (let i = 0; i < NUMDAYS; i++) {
+        const time = dayjs.unix(response.list[i].dt + timezone)
+        if (11 < time.$H && time.$H <= 14 && time.$m === 0) {
+            const weekdayCard = document.createElement('div');
+            weekdayCard.classList.add('card', 'output-card', 'five-day-card');
+            getDayForecast(response.list[i], weekdayCard, timezone);
+            weekCard.append(weekdayCard);
+        }
+    }
+}
+
+/* Display weather forecast for a single day */
+function getDayForecast(today, card, timezone) {
 
     // Create elements
-    const today = response.list[0];
-    const name = document.createElement('h3');
     const date = document.createElement('h3');
-    const temp = today.main.temp;
-    const celcius = document.createElement('p');
-    const fahrenheit = document.createElement('p');
+    const temp = document.createElement('p');
+    const tempNum = today.main.temp;
     const humidity = document.createElement('p');
     const wind = document.createElement('p');
 
     // Build elements
-    name.textContent = response.city.name;
-    date.textContent = dayjs.unix(today.dt).format('dddd, MMM D, YYYY');
-    celcius.textContent = `Current temp: ${Math.round(temp - 273.15)} °C`
-    fahrenheit.textContent = `Current temp: ${Math.round((temp - 273.15) * 9/5 + 32)} °F`;
+    date.textContent = dayjs.unix(today.dt + timezone).format('ddd, MMM D, YYYY h:mm A');
+    temp.textContent = `Temp: ${Math.round(tempNum - 273.15)} °C, ${Math.round((tempNum - 273.15) * 9/5 + 32)} °F`;
     humidity.textContent = `Humidity: ${today.main.humidity}%`;
     wind.textContent = `Wind: ${today.wind.speed} mph`;
 
     // Place elements
-    weatherHead.append(name);
-    weatherHead.append(date)
-    weatherBody.append(celcius);
-    weatherBody.append(fahrenheit);
-    weatherBody.append(humidity);
-    weatherBody.append(wind);
+    card.append(date);
+    card.append(temp);
+    card.append(humidity);
+    card.append(wind);
 }
 
 /* Adds all searched citites to recently searched dropdown list */
@@ -100,4 +115,4 @@ submitBtn.addEventListener('click', handleSubmit);
 window.onload = handleRecents;
 
 // Uncomment to clear storage
-//localStorage.setItem("recentCities", JSON.stringify([]));
+// localStorage.setItem("recentCities", JSON.stringify([]));

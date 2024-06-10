@@ -32,20 +32,25 @@
         </header>
 
         <main>
+            <!-- SEARCH BAR -->
             <h2>Find your dream destination:</h2>
             <div class="card input-card">
                 <div class="card-body input-card-body">
                     <label for="input-city" id="input-city-label">City:</label>
-                    <input type="text" id="input-city">
-                    <div class="dropdown">
+                    <input type="text" class="input-content" id="input-city">
+                    <div class="dropdown input-content">
                         <button class="btn btn-outline-light dropdown-toggle searches" type="button" data-bs-toggle="dropdown" aria-expanded="false">Recent searches</button>
                         <ul class="dropdown-menu"></ul>
                     </div>
-                    <button type="submit" class="btn btn-outline-light submit">Submit</button>
+                    <button type="submit" class="btn btn-outline-light submit input-content">Submit</button>
                 </div>
             </div>
 
-            <!-- OUTPUT -->
+            <!-- SEARCH RESULTS -->
+            <div class="card output-card">
+                <div class="card-body output-card-body">
+                </div>
+            </div>
 
         </main>
     </div>

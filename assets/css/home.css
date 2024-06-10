@@ -80,7 +80,8 @@ h1 {
 }
 
 h2 {
-    font-size: calc(4px + 2vw);
+    font-size: calc(22px + 1vw);
+    text-align: center;
 }
 
 

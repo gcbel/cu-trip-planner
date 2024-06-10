@@ -32,20 +32,16 @@
         </header>
 
         <main>
-            <!-- INPUT BOX -->
-            <div class="row g-3">
-                <div class="card">
-                    <div class="card-body">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                                <label for="inputCity" class="form-label">City:</label>
-                                <input type="city" class="form-control" id="inputCity">
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary submit">Submit</button>
-                              </div>
-                        </form>
+            <h2>Find your dream destination:</h2>
+            <div class="card input-card">
+                <div class="card-body input-card-body">
+                    <label for="input-city" id="input-city-label">City:</label>
+                    <input type="text" id="input-city">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle searches" type="button" data-bs-toggle="dropdown" aria-expanded="false">Recent searches</button>
+                        <ul class="dropdown-menu"></ul>
                     </div>
+                    <button type="submit" class="btn btn-outline-light submit">Submit</button>
                 </div>
             </div>
 

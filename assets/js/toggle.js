@@ -12,8 +12,10 @@ function setColor() {
         if (backgroundImg) {
             backgroundImg.src = "assets/images/home-light.jpg";
             backgroundImg.style.opacity = "0.7";
+            document.documentElement.style.backgroundColor = 'var(--accentblue)'
+        } else {
+            document.documentElement.style.backgroundColor = 'var(--primaryblue)'
         }
-        document.documentElement.style.backgroundColor = 'var(--accentblue)'
         toggleIcon.classList.remove("fa-sun");
         toggleIcon.classList.add("fa-moon");
     } else {
@@ -21,8 +23,10 @@ function setColor() {
         if (backgroundImg) {
             backgroundImg.src = "assets/images/home-dark.jpg";
             backgroundImg.style.opacity = "0.85";
+            document.documentElement.style.backgroundColor = 'var(--accentgray)'
+        } else {
+            document.documentElement.style.backgroundColor = 'black'
         }
-        document.documentElement.style.backgroundColor = 'var(--accentgray)'
         toggleIcon.classList.remove("fa-moon");
         toggleIcon.classList.add("fa-sun");
     }

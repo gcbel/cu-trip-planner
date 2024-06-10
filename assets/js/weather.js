@@ -29,8 +29,14 @@ function handleSubmit(event) {
             getSearchForecast(response)
         })
 
-        // Console log if error
-        .catch(error => {console.log('Error fetching the weather data:', error)})
+        // Send error message if error
+        .catch(error => {
+            console.log('Error fetching the weather data:', error)
+            weatherCard.classList.remove('hidden');
+            const errorMessage = document.createElement('h4');
+            errorMessage.textContent = `Sorry, I haven't heard of any cities called ${city}. Please try again.`
+            weatherCard.append(errorMessage);
+        })
 
     document.querySelector("#input-city").value = "";  // Clear input value
 }

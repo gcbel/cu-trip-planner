@@ -10,10 +10,6 @@
     --clear: #ffffff00;
 }
 
-* {
-    font-family: "Times New Roman", Times, serif;
-}
-
 /*** BACKGROUND ***/
 html {
     background-color: var(--accentblue);
@@ -80,12 +76,16 @@ h1 {
 }
 
 h2 {
+    font-family: "DM Sans", sans-serif;
     font-size: calc(22px + 1vw);
+    font-weight: 280;
+    letter-spacing: 4px;
     text-align: center;
+    transform: scaleY(1.05);
 }
 
 
-/*** LET'S ADVENTURE ***/
+/*** MAIN NAGIVATION AREA ***/
 main {
     display: flex;
     flex-direction: column;
@@ -100,6 +100,7 @@ main {
     border: 1px solid #000000;
     display: flex;
     align-items: center;
+    border-radius: 15px 15px 15px 15px;
 }
 
 .dark .subheader {
@@ -120,9 +121,14 @@ main {
 }
 
 h3 {
-    display: flex;
-    font-size: calc(8px + 4vw); 
+    font-family: "DM Sans", sans-serif;
+    font-size: calc(20px + 2vw); 
+    font-weight: 300;
+    letter-spacing: 5px;
     text-align: center;
+    display: flex;
+    margin: 12px;
+    transform: scaleY(1.05);
 }
 
 .dark h3 {

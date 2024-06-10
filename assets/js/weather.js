@@ -34,7 +34,7 @@ function handleSubmit(event) {
             console.log('Error fetching the weather data:', error)
             mainCard.classList.remove('hidden');
             weekCard.classList.add('hidden');
-            const errorMessage = document.createElement('h4');
+            const errorMessage = document.createElement('h5');
             errorMessage.textContent = `Sorry, I haven't heard of any cities called ${city}. Please try again.`
             mainCard.append(errorMessage);
         })
@@ -75,7 +75,7 @@ function getSearchForecast(response) {
 function getDayForecast(today, card, timezone) {
 
     // Create elements
-    const date = document.createElement('h3');
+    const date = document.createElement('h4');
     const temp = document.createElement('p');
     const tempNum = today.main.temp;
     const humidity = document.createElement('p');

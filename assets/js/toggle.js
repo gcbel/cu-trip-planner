@@ -2,7 +2,7 @@
 const toggle = document.querySelector(".toggle");
 const toggleIcon = document.querySelector("#toggle-icon");
 const container = document.querySelector('.container');
-const backgroundImg = document.querySelector('img');
+const backgroundImg = document.querySelector('.background');
 
 /* FUNCTIONS */
 /* Set theme upon switching from main and blog pages according to last mode */

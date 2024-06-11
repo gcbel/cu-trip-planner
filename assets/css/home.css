@@ -19,7 +19,7 @@ body {
     background-color: var(--clear);
 }
 
-img {
+.background {
     z-index: -1;
     position: fixed;
     top: 0;
@@ -72,7 +72,7 @@ h1 {
     font-family: "Bodoni Moda", serif;
     font-size: calc(35px + 5vw);
     text-align: center;
-    margin: 0px;
+    margin: 0px 20px 0px 20px;
 }
 
 h2 {
@@ -82,6 +82,7 @@ h2 {
     letter-spacing: 4px;
     text-align: center;
     transform: scaleY(1.05);
+    margin: 0px 26px 0px 26px;
 }
 
 
@@ -90,7 +91,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center */
-    padding: 10vh 0px 10vh 0px;
+    padding: 40px 0px 20px 0px;
 }
 
 .adventure, .location {
@@ -126,6 +127,7 @@ h3 {
     font-family: "DM Sans", sans-serif;
     font-size: calc(20px + 2vw); 
     font-weight: 300;
+    text-align: center;
     letter-spacing: 5px;
     display: flex;
     justify-content: center; /* Center text */
@@ -151,14 +153,31 @@ a {
 }
 
 /*** FEATURED LOCATIONS ***/
-.place {
-    width: calc((100% - 28px) / 2);
+.location-body {
+    width: 95%;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    flex-grow: 1;
+    justify-content: center;
 }
 
-.place-body {
+.place {
+    text-align: center;
+    width: calc((100% - 80px) / 3);
+    min-width: 175px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 12px;
+    padding: 8px 8px 16px 8px;
+}
 
+h4 {
+    text-align: center;
+}
+
+.place-body img {
+    width: 95%;
+    height: 86%;
+    border-radius: 15px 15px 15px 15px;
+    margin-bottom: 10px;
 }

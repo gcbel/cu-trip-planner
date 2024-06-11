@@ -93,7 +93,7 @@ main {
     padding: 10vh 0px 10vh 0px;
 }
 
-.subheader {
+.adventure, .location {
     background-color: var(--accentblue-clear); /* Set color of main buttons */
     width: calc(30px + 60vw);
     margin: 0px 6vw 20px 6vw;
@@ -103,20 +103,22 @@ main {
     border-radius: 15px 15px 15px 15px;
 }
 
-.dark .subheader {
+.dark .adventure, .dark .location {
     background-color: var(--accentgray-clear);
     border: 1px solid #ffffff;
 }
 
-.subheader:hover {
+.clickable:hover {
+    color: black;
     background-color: var(--accentblue-hover)
 }
 
-.dark .subheader:hover {
+.dark .clickable:hover {
+    color: white;
     background-color: var(--accentgray-hover)
 }
 
-.subheader-body {
+.adventure-body, .location-body {
     padding: 4px 0px 0px 0px;
 }
 
@@ -125,8 +127,8 @@ h3 {
     font-size: calc(20px + 2vw); 
     font-weight: 300;
     letter-spacing: 5px;
-    text-align: center;
     display: flex;
+    justify-content: center; /* Center text */
     margin: 12px;
     transform: scaleY(1.05);
 }
@@ -143,19 +145,20 @@ h3:hover {
     color: white;
 }
 
-svg {
-    font-size: 100px;
-    margin: calc(10px + 2vw) 0px 0px 0px;
-}
-
 a {
     text-decoration: none; /* Remove link look */
     color: black;
 }
 
-/*** ICONS FOR LARGE SCREENS ***/
-@media screen and (min-width: 430px) {
-    svg {
-        margin: 2px 0px 0px 10px;
-    }
+/*** FEATURED LOCATIONS ***/
+.place {
+    width: calc((100% - 28px) / 2);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.place-body {
+
 }

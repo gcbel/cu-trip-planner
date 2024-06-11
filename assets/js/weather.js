@@ -6,7 +6,7 @@ const ul = document.querySelector("ul");
 const NUMDAYS = 40;
 
 /* FUNCTIONS */
-/* Handles fetching forecast details */
+/* Handles fetching forecast details for a search */
 function handleSubmit(event) {
     event.preventDefault();
 
@@ -14,39 +14,50 @@ function handleSubmit(event) {
     weekCard.innerHTML = ""
     const city = document.querySelector("#input-city").value;  // Get city input
 
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=73e3e96b49fb7822dadb93b5d873f6a4`)
-        .then((response) => {
-            if (!response.ok) {throw new Error(`Status: ${response.status}`)}
-            return response.json();
-        })
-
-        // Store successful response information and get forecast
-        .then((response) => {
-            createLi(city);
-            let recentCities = JSON.parse(localStorage.getItem("recentCities")) || [];
-            recentCities.push(city)
-            localStorage.setItem("recentCities", JSON.stringify(recentCities));
-            getSearchForecast(response)
-        })
-
-        // Send error message if error
-        .catch(error => {
-            console.log('Error fetching the weather data:', error)
-            mainCard.classList.remove('hidden');
-            weekCard.classList.add('hidden');
-            const errorMessage = document.createElement('h5');
-            errorMessage.textContent = `Sorry, I haven't heard of any cities called ${city}. Please try again.`
-            mainCard.append(errorMessage);
-        })
+    handleAPICall(city);
 
     document.querySelector("#input-city").value = "";  // Clear input value
 }
 
+/* Handles fetching forecast details when a recent search is selected */
+function handleRecentSearch(event) {
+    mainCard.innerHTML = ""  // Clear content from last search
+    weekCard.innerHTML = ""
+    
+    handleAPICall(event.target.textContent)
+}
+
+/* Handles calling the API */
+function handleAPICall(city) {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=73e3e96b49fb7822dadb93b5d873f6a4`)
+    .then((response) => {
+        if (!response.ok) {throw new Error(`Status: ${response.status}`)}
+        return response.json();
+    })
+
+    // Store successful response information and get forecast
+    .then((response) => {
+        createLi(city);
+        let recentCities = JSON.parse(localStorage.getItem("recentCities")) || [];
+        recentCities.push(city)
+        localStorage.setItem("recentCities", JSON.stringify(recentCities));
+        getSearchForecast(response)
+    })
+
+    // Send error message if error
+    .catch(error => {
+        console.log('Error fetching the weather data:', error)
+        mainCard.classList.remove('hidden');
+        weekCard.classList.add('hidden');
+        const errorMessage = document.createElement('h5');
+        errorMessage.textContent = `Sorry, I haven't heard of any cities called ${city}. Please try again.`
+        mainCard.append(errorMessage);
+    })
+}
+
 /* Display all days of weather forecasts */
 function getSearchForecast(response) {
-    console.log(response);
-
-    // Make cards visible
+   // Make cards visible
     mainCard.classList.remove('hidden');
     weekCard.classList.remove('hidden');
 
@@ -112,7 +123,5 @@ function createLi(city) {
 
 /* EVENT LISTENERS */
 submitBtn.addEventListener('click', handleSubmit);
+ul.addEventListener('click', handleRecentSearch);
 window.onload = handleRecents;
-
-// Uncomment to clear storage
-// localStorage.setItem("recentCities", JSON.stringify([]));

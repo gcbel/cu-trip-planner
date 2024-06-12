@@ -110,14 +110,6 @@ function getDayForecast(today, card, timezone) {
     card.append(wind);
 }
 
-/* Gets relevant icon for weather condition */
-function getIcon (condition) {
-    console.log(condition)
-    if (condition === "clear sky") {
-
-    }
-}
-
 /* Adds all searched citites to recently searched dropdown list */
 function handleRecents(event) {
     const recentCities = JSON.parse(localStorage.getItem("recentCities")) || [];
@@ -134,7 +126,19 @@ function createLi(city) {
     ul.insertBefore(li, ul.firstChild);
 }
 
+/* If user has selected a featured location, populate screen with request */
+function checkForFeatured() {
+    const city = localStorage.getItem("featured") || "";
+    if (city !== "") {
+        handleAPICall(city);
+        localStorage.setItem("featured", "");
+    }
+}
+
+/* INITIALIZERS */
+window.onload = handleRecents;
+window.onload = checkForFeatured;
+
 /* EVENT LISTENERS */
 submitBtn.addEventListener('click', handleSubmit);
 ul.addEventListener('click', handleRecentSearch);
-window.onload = handleRecents;

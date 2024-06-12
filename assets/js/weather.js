@@ -57,6 +57,8 @@ function handleAPICall(city) {
 
 /* Display all days of weather forecasts */
 function getSearchForecast(response) {
+    console.log(response)
+
    // Make cards visible
     mainCard.classList.remove('hidden');
     weekCard.classList.remove('hidden');
@@ -87,6 +89,7 @@ function getDayForecast(today, card, timezone) {
 
     // Create elements
     const date = document.createElement('h4');
+    const icon = document.createElement('img');
     const temp = document.createElement('p');
     const tempNum = today.main.temp;
     const humidity = document.createElement('p');
@@ -94,15 +97,25 @@ function getDayForecast(today, card, timezone) {
 
     // Build elements
     date.textContent = dayjs.unix(today.dt + timezone).format('ddd, MMM D, YYYY h:mm A');
+    icon.src = `https://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png`;
     temp.textContent = `Temp: ${Math.round(tempNum - 273.15)} °C, ${Math.round((tempNum - 273.15) * 9/5 + 32)} °F`;
     humidity.textContent = `Humidity: ${today.main.humidity}%`;
     wind.textContent = `Wind: ${today.wind.speed} mph`;
 
     // Place elements
     card.append(date);
+    card.append(icon);
     card.append(temp);
     card.append(humidity);
     card.append(wind);
+}
+
+/* Gets relevant icon for weather condition */
+function getIcon (condition) {
+    console.log(condition)
+    if (condition === "clear sky") {
+
+    }
 }
 
 /* Adds all searched citites to recently searched dropdown list */

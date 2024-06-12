@@ -10,6 +10,6 @@ function navigate (city) {
 }
 
 /* EVENT LISTENER */
-quebec.addEventListener('click', () => navigate("quebec city"));
-newOrleans.addEventListener('click', () => navigate("new orleans"));
-sanFrancisco.addEventListener('click', () => navigate("san francisco"));
+quebec.addEventListener('click', () => navigate("Quebec City"));
+newOrleans.addEventListener('click', () => navigate("New Orleans"));
+sanFrancisco.addEventListener('click', () => navigate("San Francisco"));
